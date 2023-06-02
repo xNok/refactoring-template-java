@@ -9,20 +9,12 @@ import java.time.LocalDate;
 
 class BirthdayCalculatorAfterTest {
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Test
     public void testGetHowManyDaysFromMyNextBirthday() {
-        LocalDate date = LocalDate.of(2023, 5,29);
-
-        BirthdayCalculatorAfter birthdayCalculator = new BirthdayCalculatorAfter(date);
-        long diff = birthdayCalculator.getHowManyDaysFromMyNextBirthday("01-26");
+        LocalDate today = LocalDate.of(2023, 5,29);
+        String birthdayStr = "01-26";
+        BirthdayCalculatorAfter birthdayCalculator = new BirthdayCalculatorAfter(today);
+        long diff = birthdayCalculator.getHowManyDaysFromMyNextBirthday(birthdayStr);
         Assertions.assertEquals(diff, 242);
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 }
