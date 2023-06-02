@@ -22,8 +22,8 @@ public class EmailServiceAfter {
     }
 
     private void send(String receiverEmail, String senderEmail, String content) {
-        //send email
-        System.out.printf("Send email from %s%n to %s%n", senderEmail, receiverEmail);
+        //actually send email
+        System.out.printf("Send email from %s%n to %s%n, %s%n", senderEmail, receiverEmail, content);
     }
 
     private boolean validateEmail(String email) {
