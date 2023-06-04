@@ -1,4 +1,4 @@
-package move.feature;
+package move.feature.before;
 
 public class User {
     private String userId;

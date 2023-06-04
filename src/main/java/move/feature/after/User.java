@@ -6,7 +6,8 @@ public class User {
 
     private Address address;
 
-    public Address getAddress() {
-        return address;
+    @Deprecated
+    public String getFullAddress() {
+        return address.getFullAddress();
     }
 }
