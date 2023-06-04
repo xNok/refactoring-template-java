@@ -28,7 +28,6 @@ public class EmailServiceBefore {
                 }
             }
         }
-        ;
     }
 
     private void send(String receiverEmail, String senderEmail, String content) {
