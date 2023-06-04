@@ -1,22 +1,22 @@
-package extract.method;
+package extract.method.before;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EmailServiceBefore {
+public class EmailService {
 
     Map<String, String> userEmailMap;
 
-    public EmailServiceBefore() {
+    public EmailService() {
         this.userEmailMap = new HashMap<>();
         this.userEmailMap.put("Gerry Smith", "g.smith@gmail.com");
         this.userEmailMap.put("Tom Brown", "t.brown@gmail.com");
         this.userEmailMap.put("Greg White", "g.white@gmail.com");
     }
 
-    public void sendEmail(String receiverEmail, String sender, String content) {
+    public void sendEmail(String receiverEmail, String sender, String content) throws Exception {
         String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(receiverEmail);
@@ -25,8 +25,14 @@ public class EmailServiceBefore {
                 String senderEmail = userEmailMap.get(sender);
                 if (content.trim().length() < 500) {
                     this.send(receiverEmail, senderEmail, content);
+                } else {
+                    throw new Exception("Email content is oversize");
                 }
+            } else {
+                throw new Exception("User not exist");
             }
+        } else {
+            throw new Exception("Email address not valid");
         }
     }
 
