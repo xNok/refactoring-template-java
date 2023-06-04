@@ -1,8 +1,11 @@
-package polymorphism;
+package polymorphism.before;
 
-public class MemberBefore {
-
+public class Member {
     private Type type;
+
+    public Member(Type type) {
+        this.type = type;
+    }
 
     public String getContent() {
         switch (type) {
@@ -11,12 +14,12 @@ public class MemberBefore {
             case BASIC:
                 return "Basic content.";
             case PREMIUM:
-                return "Premium content";
+                return "Premium content.";
         }
         throw new RuntimeException("Member type not known for " + type);
     }
 
-    enum Type {
+    public enum Type {
         PREMIUM,
         BASIC,
         FREE
