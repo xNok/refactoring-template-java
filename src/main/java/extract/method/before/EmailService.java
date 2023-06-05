@@ -1,6 +1,5 @@
 package extract.method.before;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,13 +8,16 @@ public class EmailService {
 
     Map<String, String> userEmailMap;
 
-    public EmailService() {
-        this.userEmailMap = new HashMap<>();
-        this.userEmailMap.put("Gerry Smith", "g.smith@gmail.com");
-        this.userEmailMap.put("Tom Brown", "t.brown@gmail.com");
-        this.userEmailMap.put("Greg White", "g.white@gmail.com");
+    public EmailService(Map<String, String> userEmailMap) {
+        this.userEmailMap = userEmailMap;
     }
 
+    /**
+     * Send an email on behave of an user, to a receiver 
+     * @param receiverEmail is an email, and the input string should be validated
+     * @param sender is the name of the sender and it's email is retrive from our database
+     * @param content is the body of the email and should be validated
+     */
     public void sendEmail(String receiverEmail, String sender, String content) throws Exception {
         String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(EMAIL_REGEX);

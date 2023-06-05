@@ -1,17 +1,14 @@
 package extract.method.after;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 public class EmailService {
+
     Map<String, String> userEmailMap;
 
-    public EmailService() {
-        this.userEmailMap = new HashMap<>();
-        this.userEmailMap.put("Gerry Smith", "g.smith@gmail.com");
-        this.userEmailMap.put("Tom Brown", "t.brown@gmail.com");
-        this.userEmailMap.put("Greg White", "g.white@gmail.com");
+    public EmailService(Map<String, String> userEmailMap) {
+        this.userEmailMap = userEmailMap;
     }
 
     public void sendEmail(String receiverEmail, String sender, String content) throws Exception {
@@ -38,14 +35,12 @@ public class EmailService {
         if (!userEmailMap.containsKey(sender)) {
             throw new Exception("User not exist");
         }
-        ;
     }
 
     private void validateContentSize(String content) throws Exception {
         if (content.length() < 500) {
             throw new Exception("Email content is oversize");
         }
-        ;
     }
 
     private void validate(String receiver, String sender, String content) throws Exception {
